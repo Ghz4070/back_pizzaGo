@@ -67,7 +67,7 @@ class OrderController {
       if (Order) {
         next(success(Order));
       } else {
-        next(error("No Order found for this id"));
+        next(error("No Order found for this id")); 
       }
     });
   }
@@ -104,8 +104,7 @@ class OrderController {
         param.data.price &&
         param.data.status &&
         param.data.user &&
-        param.data.content &&
-        param.data.promo
+        param.data.content 
       ) {
         const Orders = await prisma.updateOrder(param);
         next(success(Orders));

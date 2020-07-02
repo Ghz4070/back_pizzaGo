@@ -1,11 +1,7 @@
 # Specifies the HTTP endpoint of your Prisma API.
 #endpoint: ''
-<<<<<<< HEAD
 # endpoint: http://localhost:4466
-endpoint: http://localhost:4466
-=======
 endpoint: https://database-pizza-go-fbadf8e32e.herokuapp.com
->>>>>>> aa37095dbce9bef4a7d011eaaef295bdc500d58e
 
 # Defines your models, each model is mapped to the database as a table.
 datamodel:

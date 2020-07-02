@@ -20,11 +20,6 @@ anonymeRouteOrder.route("/add").post(async (req, res) => {
       },
     },
     content: req.body.content,
-    /* promo: {
-      connect: {
-        id: req.body.promoId,
-      },
-    }, */
   };
   const Orders = await Order.addOrder(param);
   res.json(Orders);
@@ -63,11 +58,6 @@ adminRouteOrder.route("/update").put(async (req, res) => {
         },
       },
       content: req.body.content,
-      promo: {
-        connect: {
-          id: req.body.promoId,
-        },
-      },
     },
   };
   const Orders = await Order.updateOrder(param);

@@ -156,12 +156,8 @@ async function orderFixture() {
       },
       promo: null,
     },
-    promo: {
-      connect: {
-        id: "ckbzqprmy01u80928gubu3xa5",
-      },
-    },
   });
+  
   await prisma.createOrder({
     id: "ckbvdhe5301x4092841mx87b4",
     price: 25,
@@ -317,13 +313,6 @@ async function orderFixture() {
       },
       promo: null,
     },
-    promo: {
-      connect: {
-        id: "ckbzqprmy98g80928gubu3rt3",
-      },
-    },
   });
 }
 orderFixture().catch((e) => console.error(e));
-
-const { prisma } = require("../../src/generated/prisma-client");

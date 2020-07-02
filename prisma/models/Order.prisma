@@ -1,5 +1,3 @@
-#import Promo from 'Promo.prisma'
-
 type Order {
     id: ID! @id
     price: Float!
@@ -7,5 +5,4 @@ type Order {
     status: Float! @default(value: 1)
     user: User @relation(link: INLINE)  
     content: Json!
-    promo: Promo @relation(link: INLINE)
 }
