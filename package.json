@@ -6,8 +6,10 @@
   "scripts": {
     "test": "mocha --ui tdd --require @babel/polyfill --require @babel/register src/tests/*.test.js",
     "start": "npm install && nodemon --exec babel-node -r dotenv/config src/server.js",
-    "serve": "node dist/server.js",
-    "heroku-postbuild": "npm install"
+    "serve": "node dist/server.js"
+  },
+  "engines": {
+    "node": "12.16.2"
   },
   "keywords": [],
   "author": "",

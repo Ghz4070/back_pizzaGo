@@ -3,7 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
-// import {PORT, url} from
+import {PORT, url} from './config';
 
 //Import middleware
 dotenv.config();
@@ -27,23 +27,23 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app/user`, anonymeRouteUser);
-app/drink`, anonymeRouteDrink);
-app/pizza`, anonymeRoutePizza);
-app/dessert`, anonymeRouteDessert);
-app/category`, anonymeRouteCategory);
-app/promo`, anonymeRoutePromo);
-app/size`, anonymeRouteSize);
-app/order`, anonymeRouteOrder);
+app.use(`${url}/user`, anonymeRouteUser);
+app.use(`${url}/drink`, anonymeRouteDrink);
+app.use(`${url}/pizza`, anonymeRoutePizza);
+app.use(`${url}/dessert`, anonymeRouteDessert);
+app.use(`${url}/category`, anonymeRouteCategory);
+app.use(`${url}/promo`, anonymeRoutePromo);
+app.use(`${url}/size`, anonymeRouteSize);
+app.use(`${url}/order`, anonymeRouteOrder);
 
-app.use(`/admin/user`, checkToken ,adminRouteUser);
-app.use(`/admin/pizza`, checkToken, adminRoutePizza);
-app.use(`/admin/category`, checkToken, adminRouteCategory);
-app.use(`/admin/drink`, checkToken, adminRouteDrink);
-app.use(`/admin/dessert`, checkToken, adminRouteDessert);
-app.use(`/admin/promo`, checkToken, adminRoutePromo);
-app.use(`/admin/size`, checkToken, adminRouteSize);
-app.use(`/admin/order`, checkToken, adminRouteOrder);
+app.use(`${url}/admin/user`, checkToken ,adminRouteUser);
+app.use(`${url}/admin/pizza`, checkToken, adminRoutePizza);
+app.use(`${url}/admin/category`, checkToken, adminRouteCategory);
+app.use(`${url}/admin/drink`, checkToken, adminRouteDrink);
+app.use(`${url}/admin/dessert`, checkToken, adminRouteDessert);
+app.use(`${url}/admin/promo`, checkToken, adminRoutePromo);
+app.use(`${url}/admin/size`, checkToken, adminRouteSize);
+app.use(`${url}/admin/order`, checkToken, adminRouteOrder);
 
 
-// app.listen(PORT, () => console.log(`SERVER IS RUNNING ON PORT ${PORT}`));
+app.listen(PORT, () => console.log(`SERVER IS RUNNING ON PORT ${PORT}`));
