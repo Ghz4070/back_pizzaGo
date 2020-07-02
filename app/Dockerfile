@@ -1,1 +1,0 @@
-FROM heroku/heroku:18 AS production

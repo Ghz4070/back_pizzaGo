@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --ui tdd --require @babel/polyfill --require @babel/register src/tests/*.test.js",
-    "start": "nodemon --exec babel-node -r dotenv/config src/server.js",
-    "serve": "node dist/server.js"
+    "start": "npm install && nodemon --exec babel-node -r dotenv/config src/server.js",
+    "serve": "node dist/server.js",
+    "heroku-postbuild": "npm install"
   },
   "keywords": [],
   "author": "",

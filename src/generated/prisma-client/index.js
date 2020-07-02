@@ -40,6 +40,6 @@ var models = [
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `https://prisma-pizzago-a941f66819.herokuapp.com`
+  endpoint: `https://database-pizza-go-fbadf8e32e.herokuapp.com`
 });
 exports.prisma = new exports.Prisma();
