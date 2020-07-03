@@ -59,7 +59,7 @@ class UserController {
                     tokenResetPassword: null
                 });
 
-                const email = new NodeMailer({host: process.env.HOST, port: process.env.PORT, secure: process.env.SECURE, auth: {email: process.env.MAIL, password: process.env.PWD_MAIL}});
+                const email = new NodeMailer({host: process.env.HOST, port: process.env.PORT_MAIL, secure: process.env.SECURE, auth: {email: process.env.MAIL, password: process.env.PWD_MAIL}});
                 const modelMailActivate = email.modelMailDefault({to: user.data.email, subject: "Activate your account 💁🏻‍♂️", obj: {html: "mustActivate", token: crypt}});
 
                 const transport = email.createTransport();
@@ -168,7 +168,7 @@ class UserController {
             if(getUser.users.length > 0){
                 const deleteActivateToken = await prisma.updateUser({where: {id: getUser.users[0].id}, data: {tokenActivate: ""}});
                 
-                const email = new NodeMailer({host: process.env.HOST, port: process.env.PORT, secure: process.env.SECURE, auth: {email: process.env.MAIL, password: process.env.PWD_MAIL}});
+                const email = new NodeMailer({host: process.env.HOST, port: process.env.PORT_MAIL, secure: process.env.SECURE, auth: {email: process.env.MAIL, password: process.env.PWD_MAIL}});
                 const modelMailAccountActivate = email.modelMailDefault({to: getUser.users[0].email, subject: "Account activate ! ✅", obj: {html: "TokenActivateDeleted"}});
                 
                 const transport = email.createTransport();
@@ -189,7 +189,7 @@ class UserController {
                 console.log(lessCharSpecial);
                 await prisma.updateUser({where: {id: checkEmail.result.users[0].id}, data:{tokenResetPassword: lessCharSpecial}});
                 
-                const email = new NodeMailer({host: process.env.HOST, port: process.env.PORT, secure: process.env.SECURE, auth: {email: process.env.MAIL, password: process.env.PWD_MAIL}});
+                const email = new NodeMailer({host: process.env.HOST, port: process.env.PORT_MAIL, secure: process.env.SECURE, auth: {email: process.env.MAIL, password: process.env.PWD_MAIL}});
                 const modelMailForgetPassword = email.modelMailDefault({to: checkEmail.result.users[0].email, subject: "Reset password 🖋", obj: {html: "forgetPassword", token: lessCharSpecial}});
 
                 const transport = email.createTransport();
@@ -209,7 +209,7 @@ class UserController {
                 const cryptPassword = await this.encryptorData(objResetPassword.pwd)
                 await prisma.updateUser({where:{id: id}, data: {password: cryptPassword, tokenResetPassword: null}});
 
-                const email = new NodeMailer({host: process.env.HOST, port: process.env.PORT, secure: process.env.SECURE, auth: {email: process.env.MAIL, password: process.env.PWD_MAIL}});
+                const email = new NodeMailer({host: process.env.HOST, port: process.env.PORT_MAIL, secure: process.env.SECURE, auth: {email: process.env.MAIL, password: process.env.PWD_MAIL}});
                 const modelMailResetPassword = email.modelMailDefault({to: getUser.users[0].email, subject: "Password has been reset ✅", obj: {html: "resetPassword"}});
 
                 const transport = email.createTransport();
