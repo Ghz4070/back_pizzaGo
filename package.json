@@ -1,12 +1,12 @@
 {
-  "name": "api_pizzago",
+  "name": "app",
   "version": "1.0.0",
-  "description": "api_prisma_express",
+  "description": "",
   "private": true,
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Ghz4070/back_pizzaGo.git"
+    "url": "git@github.com:RaphaelTo/back_pizzaGo.git"
   },
   "scripts": {
     "test": "mocha --ui tdd --require @babel/polyfill --require @babel/register src/tests/*.test.js",
@@ -16,7 +16,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",

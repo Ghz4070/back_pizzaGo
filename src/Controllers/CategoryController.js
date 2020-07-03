@@ -2,22 +2,22 @@ import { prisma } from '../generated/prisma-client';
 import { success, error } from '../returnFunc';
 
 class CategoryController {
-    async checkId(param) {
-        let check = false;
+   async checkId(param) {
+        let check  = false;
         await this.getCategoryById(param).then(resp => {
-            switch (resp.status) {
-                case 'success':
-                    check = true;
-                    break;
-                case 'error':
-                    check = false;
-                    break;
-                default:
-                    check = false;
-                    break;
-            }
-        });
-        return check;
+             switch (resp.status) {
+                 case 'success':
+                     check = true;
+                 break;
+                 case 'error' :
+                     check = false;
+                 break;
+                 default :
+                 check = false;
+                 break;
+             }
+         });
+         return check;
     }
 
     getAllCategory() {
@@ -53,7 +53,7 @@ class CategoryController {
         });
     }
 
-    async deleteCategory(param) {
+   async deleteCategory(param) {
         let check = this.checkId(param);
 
         return new Promise(async (next) => {

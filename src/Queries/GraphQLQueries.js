@@ -106,6 +106,11 @@ export const getOrderWithUser = `
             tel
         }
         content
+        promo {
+            id
+            name
+            amount
+        }
     }
 `;
 
@@ -118,6 +123,11 @@ export const getOrderByUser = (id) => {
                 date
                 status
                 content
+                promo {
+                    id
+                    name
+                    amount
+                }
             }
         }
     `;
