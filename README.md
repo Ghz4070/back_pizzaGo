@@ -1,8 +1,8 @@
 <h1 align="center">
-  <a href="#">
+  <a href="https://database-pizza-go-fbadf8e32e.herokuapp.com">
     <img src="./static/PizzaGo_final.png" alt="PizzaGo" height="300">
   </a>
-  <a href="#">
+  <a href="https://database-pizza-go-fbadf8e32e.herokuapp.com">
     <img src="./static/prisma.png" alt="PizzaGo" height="200">
   </a>
   <br>
@@ -19,6 +19,7 @@
 
 <p align="center">
   <a href="#what-is-pizzago">What is PizzaGo ?</a> •
+  <a href="https://database-pizza-go-fbadf8e32e.herokuapp.com">Documentation API GraphQL</a> •
   <a href="#configuration">Configuration</a> 
 </p>
 
