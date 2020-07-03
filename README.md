@@ -1,6 +1,71 @@
-# Projet app - commande de Pizza
+<h1 align="center">
+  <a href="https://database-pizza-go-fbadf8e32e.herokuapp.com">
+    <img src="./static/PizzaGo_final.png" alt="PizzaGo" height="300">
+  </a>
+  <a href="https://database-pizza-go-fbadf8e32e.herokuapp.com">
+    <img src="./static/prisma.png" alt="PizzaGo" height="200">
+  </a>
+  <br>
+   PizzaGo - API with Prisma
+  <br>
+</h1>
 
-### Contributing : [here](.github/contributing.md)
+<h4 align="center">Obtenez la pizza la plus délicieuse de tous les temps !</h4>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![Contributing here](https://img.shields.io/badge/Contributing-here-lightgrey.svg)](.github/contributing.md)
+[![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+<p align="center">
+  <a href="#what-is-pizzago">What is PizzaGo ?</a> •
+  <a href="https://database-pizza-go-fbadf8e32e.herokuapp.com">Documentation API GraphQL</a> •
+  <a href="#configuration">Configuration</a> 
+</p>
+
+## What is PizzaGo ?
+PizzaGo is a simple interface for your favorite restaurant, you can place an order in a few clicks.  
+This is the configuration repository for Front-end, you may find more informations about this project [click here](https://github.com/Ghz4070/front_pizzaGo/tree/master)
+
+## Configuration
+
+```bash
+# Clone the repository
+$ git clone git@github.com:Ghz4070/front_pizzaGo.git
+
+# create .env and add secret and algorithme for generate token
+$ cp .env.dist .env
+
+# (install prisma CLI if you not have)
+$ yarn global add prisma
+or 
+$ npm install -g prisma
+
+# configure prisma (install prisma CLI if you not have : yarn global add prisma)
+$ cd prisma
+$ docker-compose up -d
+$ prisma deploy
+$ prisma generate
+
+# add all fixtures (add PizzaFixture and OrderFixture last)
+$ node ./prisma/fixtures/FilesNameFixture.js
+
+# install dependencies
+$ cd /back_pizzaGo
+$ yarn install
+
+# Documentation API -> localhost:4466 or localhost:4466/_admin
+# API URL -> http://localhost:4000/api/v1
+$ yarn start
+
+# API URL 
+# https://prisma-pizzago-a941f66819.herokuapp.com/default/default
+
+# add img
+$ you can add image with web site imgbb
+``` 
+## deploy api on app.prisma.io and Heroku 
+[here video explain](https://www.youtube.com/watch?v=QJe8YBs8Afg)
 
 ## MySQL with Docker
 
@@ -8,64 +73,7 @@ This example shows how to **set up Prisma using Docker and MySQL** locally on yo
 
 > This example uses a new and empty database. **Learn how to connect Prisma to your existing database [here](https://www.prisma.io/docs/-a003/)**.
 
-## How to use
-
-### 1. Download app & install dependencies
-
-Clone the repository:
-
-```
-git clone git@github.com:Ghz4070/pizzaGo.git 
-```
-
-Install Node dependencies:
-
-```
-cd pizzaGo/
-
-yarn install
-```
-
-### 2. Launch Prisma with Docker
-
-This example is based on Docker. If you don't have Docker installed, you can get it from [here](https://store.docker.com/search?type=edition&offering=community). Use the Docker Compose CLI to launch the Docker containers specified in [docker-compose.yml](./back/docker-compose.yml):
-
-```
-cd prisma/
-
-docker-compose up -d
-```
-
-### 3. Install the Prisma CLI
-
-To run the example, you need the Prisma CLI. Please install it via NPM or [using another method](https://www.prisma.io/docs/prisma-cli-and-configuration/using-the-prisma-cli-alx4/#installation):
-
-```
-npm install -g prisma
-	ou
-yarn global add prisma  
-```
-
-### 4. Set up database & deploy Prisma datamodel
-
-To deploy the datamodel for this example, run the following command:
-
-```
-cd prisma/
-prisma deploy
-and node ./prisma/fixtures/FilesNameFixture.js
-```
-
-### 5. Run the script
-
-Execute the script with this command: 
-
-```
-
-yarn start
-```
-
-## Next steps
+## More information for prisma
 
 - [Use Prisma with an existing database](https://www.prisma.io/docs/-a003/)
 - [Explore the Prisma client API](https://www.prisma.io/client/client-javascript)

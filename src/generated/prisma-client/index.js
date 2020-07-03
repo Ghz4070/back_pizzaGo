@@ -9,6 +9,14 @@ var models = [
     embedded: false
   },
   {
+    name: "Promo",
+    embedded: false
+  },
+  {
+    name: "Size",
+    embedded: false
+  },
+  {
     name: "Dessert",
     embedded: false
   },
@@ -17,7 +25,7 @@ var models = [
     embedded: false
   },
   {
-    name: "Ingredient",
+    name: "User",
     embedded: false
   },
   {
@@ -27,15 +35,11 @@ var models = [
   {
     name: "Pizza",
     embedded: false
-  },
-  {
-    name: "User",
-    embedded: false
   }
 ];
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `http://localhost:4466`
+  endpoint: `https://database-pizza-go-fbadf8e32e.herokuapp.com`
 });
 exports.prisma = new exports.Prisma();

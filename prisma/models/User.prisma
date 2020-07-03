@@ -4,7 +4,7 @@ type User {
     lastname: String!
     address: String!
     zip: Int!
-    country: String!
+    city: String!
     tel: String!
     email: String!
     password: String!

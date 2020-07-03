@@ -1,11 +1,9 @@
-#import Ingredient from 'Ingredient.prisma'
 #import Category from 'Category.prisma'
 
 type Pizza {
     id: ID! @id
-    price: Float!
-    size: String!
+    name: String!
+    img: String!
     composition: Json!
-    ingredient: [Ingredient!]! @relation(link: TABLE)
-    category: [Category!]! @relation(link: TABLE)  
+    category: Category @relation(link: INLINE)
 }

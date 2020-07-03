@@ -1,64 +1,146 @@
 export const getPizzaCatIng = `
     fragment getPizzaCatIng on Pizza {
         id
-        price
-        size
+        name
         composition
-        ingredient {
-            id 
-            price
-            quantity
-            name
-        }
+        img
         category {
             id
             name
         }
     }
-`
+`;
 
 export const getPizzaByCat = (name) => {
-    return `
+  return `
         query {
-            pizzas(where: {category_every : {name : "${name}"}}) {
+            pizzas(where: {category : {name : "${name}"}}) {
                 id
-                price
-                size
+                name
                 composition
-                ingredient {
-                    id
-                    price
-                    name
-                    quantity
-                }
-                category{ 
+                img
+                category {
                     id
                     name
                 }
             }
         }
-    `
-} 
+    `;
+};
 
 export const getOnlyMailUser = (email) => {
-    return `
+  return `
         query {
             users(where : {email : "${email}"}){
-                email
+                email,
             }
         }
-    `
-}
+    `;
+};
 
 export const getUser = (email) => {
-    return `
+  return `
         query {
             users(where : {email : "${email}"}){
+                id
                 email
                 password
                 role
                 tokenActivate
             }
         }
-    `
-}
+    `;
+};
+
+export const getCurrentUser = (email) => {
+  return `
+        query {
+            users(where : {email : "${email}"}){
+                id
+                firstname
+                lastname
+                address
+                zip
+                city
+                tel
+                email
+            }
+        }
+    `;
+};
+
+export const getUserByActivateToken = (token) => {
+  return `
+        query {
+            users(where: {tokenActivate: "${token}"}){
+                id
+                email
+                tokenActivate
+            }
+        }
+    `;
+};
+
+export const getUserByResetToken = (token) => {
+  return `
+        query {
+            users(where: {tokenResetPassword: "${token}"}){
+                id 
+                email
+                tokenResetPassword
+            }
+        }
+    `;
+};
+
+export const getOrderWithUser = `
+    fragment getOrderWithUser on Order {
+        id
+        price
+        date
+        status
+        user {
+            id
+            lastname
+            firstname
+            tel
+        }
+        content
+        promo {
+            id
+            name
+            amount
+        }
+    }
+`;
+
+export const getOrderByUser = (id) => {
+  return `
+        query {
+            orders(where: {user : {id : "${id}"}}) {
+                id
+                price
+                date
+                status
+                content
+                promo {
+                    id
+                    name
+                    amount
+                }
+            }
+        }
+    `;
+};
+
+export const getPromoByName = (name) => {
+  return `
+        query {
+          promoes(where: {name : "${name}"}) {
+            id
+            name
+            amount
+          }
+        }
+    `;
+};

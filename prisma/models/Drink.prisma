@@ -3,4 +3,5 @@ type Drink {
     price: Float!
     name: String!
     oz: Float!
+    img: String!
 }

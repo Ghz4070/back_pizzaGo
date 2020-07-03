@@ -1,10 +1,10 @@
 import { prisma } from '../generated/prisma-client';
 import { success, error } from '../returnFunc';
 
-class DessertController {
-    async checkId(param) {
+class CategoryController {
+   async checkId(param) {
         let check  = false;
-        await this.getDessertById(param).then(resp => {
+        await this.getCategoryById(param).then(resp => {
              switch (resp.status) {
                  case 'success':
                      check = true;
@@ -20,57 +20,57 @@ class DessertController {
          return check;
     }
 
-    getAllDessert() {
+    getAllCategory() {
         return new Promise(async (next) => {
-            const Desserts = await prisma.desserts()
-            if (Desserts.length > 0) {
-                next(success(Desserts));
+            const Categorys = await prisma.categories()
+            if (Categorys.length > 0) {
+                next(success(Categorys));
             } else {
-                next(success('no Dessert'));
+                next(success('no category'));
             }
         })
     }
 
-    getDessertById(id) {
+    getCategoryById(id) {
         return new Promise(async (next) => {
-            const Dessert = await prisma.dessert(id);
-            if (Dessert) {
-                next(success(Dessert));
+            const Category = await prisma.category(id);
+            if (Category) {
+                next(success(Category));
             } else {
-                next(error('No Dessert found for this id'));
+                next(error('No category found for this id'));
             }
         })
     }
 
-    addDessert(param) {
+    addCategory(param) {
         return new Promise(async (next) => {
-            if (param.price && param.name) {
-                const Desserts = await prisma.createDessert(param);
-                next(success(Desserts));
+            if (param.name) {
+                const Categorys = await prisma.createCategory(param);
+                next(success(Categorys));
             } else {
                 next(success('Empty fields'));
             }
         });
     }
 
-    async deleteDessert(param) {
+   async deleteCategory(param) {
         let check = this.checkId(param);
 
         return new Promise(async (next) => {
             if (await check) {
-                const Dessert = await prisma.deleteDessert(param);
-                next(success('The Dessert has beed deleted'));
+                const Category = await prisma.deleteCategory(param);
+                next(success('The Category has beed deleted'));
             } else {
-                next(error('No Dessert with this id'));
+                next(error('No Category with this id'));
             }
         });
     }
 
-    async updateDessert(param) {
+    async updateCategory(param) {
         return new Promise(async (next) => {
-            if (param.where.id && param.data.name && param.data.price) {
-                const Desserts = await prisma.updateDessert(param);
-                next(success(Desserts));
+            if (param.where.id && param.data.name) {
+                const Categorys = await prisma.updateCategory(param);
+                next(success(Categorys));
             } else {
                 next(success('Empty fields. Please check all fields.'));
             }
@@ -78,4 +78,4 @@ class DessertController {
     }
 }
 
-export default new DessertController();
+export default new CategoryController();

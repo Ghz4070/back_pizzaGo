@@ -35,17 +35,17 @@ class PizzaController {
             }
         })
     }
-    /* a refaire
+
     createPizza(pizza){
         return new Promise(async (next) => {
-            if(pizza.price && pizza.size && pizza.composition && pizza.ingredient && pizza.category) {
+            if(pizza.name && pizza.composition && pizza.category) {
                 const addPizza = await prisma.createPizza(pizza);
                 next(success(addPizza));
             }else {
                 next(error('Empty fields'));
             }
         })
-    }*/
+    }
 
     async deletePizzaById(pizzaId){
         return new Promise(async (next) => {
@@ -54,6 +54,30 @@ class PizzaController {
                 const deletePizza = await prisma.deletePizza(pizzaId);
                 next(success('Pizza has been deleted'));
             }else{
+                next(error('Pizza not found'));
+            }
+        })
+    }
+
+    updatePizzaById(pizzaObject) {
+        return new Promise(async next => {
+            const check = await this.getPizzaById(pizzaObject.id);
+
+            if(check) {
+                const updateObject = {
+                    where: { id: pizzaObject.id },
+                    data:{ 
+                        name: pizzaObject.name,
+                        composition: pizzaObject.composition,
+                        category: {
+                            connect: {id : pizzaObject.categoryId ? pizzaObject.categoryId : check.result.category.id}
+                        }
+                    }
+                };
+
+                const updatePizza = await prisma.updatePizza(updateObject);
+                next(success(updatePizza));
+            }else {
                 next(error('Pizza not found'));
             }
         })

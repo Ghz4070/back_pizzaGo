@@ -2,6 +2,7 @@ import express from 'express';
 import Drink from '../Controllers/DrinkController';
 
 export const anonymeRouteDrink = express.Router();
+export const adminRouteDrink = express.Router();
 
 anonymeRouteDrink.route('/')
     .get(async (req, res) => {
@@ -9,18 +10,19 @@ anonymeRouteDrink.route('/')
         res.json(Drinks);
     })
 
-anonymeRouteDrink.route('/add')
+adminRouteDrink.route('/add')
     .post(async (req, res) => {
         const param = {
             price: req.body.price,
             name: req.body.name,
-            oz: req.body.oz
+            oz: req.body.oz,
+            img: req.body.img
         };
         const Drinks = await Drink.addDrink(param);
         res.json(Drinks);
     })
 
-anonymeRouteDrink.route('/delete/:id')
+adminRouteDrink.route('/delete/:id')
     .delete(async (req, res) => {
         const param = {
             id: req.params.id
@@ -38,14 +40,15 @@ anonymeRouteDrink.route('/:id')
         res.json(Drinks);
     })
 
-anonymeRouteDrink.route('/update')
+adminRouteDrink.route('/update')
     .put(async (req, res) => {
         const param = {
             where: { id: req.body.id },
             data: {
                 price: req.body.price,
                 name: req.body.name,
-                oz: req.body.oz
+                oz: req.body.oz,
+                img: req.body.img
             }
         }
         const Drinks = await Drink.updateDrink(param);

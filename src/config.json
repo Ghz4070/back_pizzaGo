@@ -1,5 +1,4 @@
 {
-  "PORT": 3000,
-  "url": "/api/v1",
-  "secret": "AlexLePlusBeauDeLaTerreMachallah"
+  "PORT": 4000,
+  "url": "/api/v1"
 }
